@@ -1,0 +1,6 @@
+<template>
+    <template if:true={page}>
+        Current Page no is :- {page}
+    </template>
+    <c-pagination onprevious={previousHandler} onnext={nextHandler}></c-pagination>
+</template>
