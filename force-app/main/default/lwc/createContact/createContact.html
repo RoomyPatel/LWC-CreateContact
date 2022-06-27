@@ -1,9 +1,11 @@
 <template>
-    <lightning-card>
-        <lightning-record-form
-            object-api-name={objectApiName}
-            fields={fields}
-            onsuccess={handleSuccess}>
-        </lightning-record-form>
-    </lightning-card>
+    <lightning-card title="Create Contact" icon-name="standard:record">
+        <div class="slds-m-around_medium">
+            <lightning-input name="firstName" label="First Name" onchange={handleFirstNameChange} type='text' class="slds-p-around_medium"></lightning-input>
+            <lightning-input name="lastName" label="Last Name" onchange={handleLastNameChange} type="text" class="slds-p-around_medium"></lightning-input>
+            <lightning-input name="phone" label="Phone" onchange={handlePhoneChange} type="phone" class="slds-p-around_medium"></lightning-input>
+            <lightning-input name="email" label="Email" onchange={handleEmailChange} type="email" class="slds-p-around_medium"></lightning-input>
+            <lightning-button label="Add Contact" variant="brand" onclick={createContact}></lightning-button>
+        </div>
+     </lightning-card>
 </template>
