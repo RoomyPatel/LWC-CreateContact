@@ -1,0 +1,44 @@
+<template>
+    <div if:true={showPaginator}>
+        <div if:true={showrecordperpage}>
+            <div class="slds-float_right">
+                <div class="slds-grid slds-p-top_x-small">
+                    <div class="slds-col slds-size_5-of-12">
+                        <label class="slds-form-element__label" for="unique-id-of-input">Records Per Page</label>
+                    </div>
+                    <div class="slds-col slds-size_3-of-12">
+                        <lightning-combobox name="records per page" value={recordsperpagevalueselected}
+                            options={recordsPerPageOptions} onchange={handleRppChange} variant='label-hidden'
+                            dropdown-alignment='auto'>
+                        </lightning-combobox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center dynamicallyAddLeftMargin">
+            <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small">
+                <lightning-button label="First" icon-name="utility:chevronleft" onclick={firstHandler}
+                    disabled={disablePrevious}>
+                </lightning-button>
+            </div>
+            <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small">
+                <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}
+                    disabled={disablePrevious}>
+                </lightning-button>
+            </div>
+            <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small">
+                {pageNumber} OF {totalPages}
+            </div>
+            <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small">
+                <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                    onclick={nextHandler} disabled={disableNext}>
+                </lightning-button>
+            </div>
+            <div class="slds-col slds-p-top_x-small slds-p-horizontal_xx-small">
+                <lightning-button label="Last" icon-name="utility:chevronright" onclick={lastHandler}
+                    icon-position="right" disabled={disableNext}>
+                </lightning-button>
+            </div>
+        </div>
+    </div>
+</template>

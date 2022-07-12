@@ -1,0 +1,14 @@
+<template>
+    <lightning-card>
+        <template if:true={isAccountData}>  
+            <c-search-record onsearchkeychange={searchKeyHandler} getdata={accounts}></c-search-record>
+            <c-data-table body={renderedAccountData} headers={columns}></c-data-table>
+            <c-generic-paginator
+            alldata={paginationRecord}
+          onpagination={paginationHandler}
+          showrecordperpage="true"
+        >
+        </c-generic-paginator>
+        </template>
+    </lightning-card>
+</template>

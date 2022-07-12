@@ -1,0 +1,14 @@
+<template>
+  <lightning-card> 
+    <template if:true={isContactData}>  
+        <c-search-record onsearchkeychange={searchKeyHandler} getdata={contactData}></c-search-record>
+        <c-data-table body={renderedContactData} headers={columns}></c-data-table>
+        <c-generic-paginator
+      alldata={paginationRecord}
+      onpagination={paginationHandler}
+      showrecordperpage="true"
+    >
+    </c-generic-paginator>
+    </template>
+    </lightning-card>
+</template>
