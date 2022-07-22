@@ -1,0 +1,20 @@
+<template>
+    <!-- <lightning-card>
+        <c-custom-data-table getdata={accounts} columns={columns}>
+        </c-custom-data-table>
+    </lightning-card>  -->
+
+    <lightning-card variant="Narrow">
+        <div class="slds-p-horizontal_small">
+            <c-multi-select-pick-list 
+            multi-select="true"
+                if:true={accounts} 
+                options={options}
+                onselectoption={handleValueChange}
+                selected-value={selectedValue} 
+                label="Select Multi Name">
+            </c-multi-select-pick-list>
+        </div>
+    </lightning-card>
+
+</template>

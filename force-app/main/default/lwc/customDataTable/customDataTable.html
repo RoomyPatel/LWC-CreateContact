@@ -1,0 +1,59 @@
+<template>
+    <div class="slds-float_left">
+        <div class="slds-list_inline slds-p-bottom_xx-small customSelect">
+            <label class="slds-text-color_weak slds-p-horizontal_x-small" for="recordsPerPage">Records per page:</label>
+            <div class="slds-select_container">
+                <select class="slds-select" id="recordsPerPage" onchange={handleRecordsPerPage}>
+                    <template for:each={pageSizeOptions} for:item="option">
+                        <option key={option} value={option}>{option}</option>
+                    </template>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="slds-float_right">
+        <lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small slds-m-right_small"
+            label="Search" maxlength="70">
+        </lightning-input>
+    </div>
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small"
+        aria-labelledby="element-with-table-label other-element-with-table-label">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <template for:each={columns} for:item="col">
+                    <th key={col} scope="col">
+                        <a class="slds-th__action slds-text-link_reset" role="button" tabindex="0" onclick={sortRecs}
+                            name={col.fieldName}>
+                            {col.label}
+                            <lightning-icon icon-name="utility:arrowup" size="x-small" if:true={arrUp}></lightning-icon>
+                            <lightning-icon icon-name="utility:arrowdown" size="x-small" if:true={arrDown}>
+                            </lightning-icon>
+                        </a>
+                    </th>
+                </template>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={arr} for:item="row">
+                <tr key={row}>
+                    <template for:each={row} for:item="rowTable">
+                        <td key={rowTable.key}>{rowTable.value}</td>
+                    </template>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+
+    <lightning-layout>
+        <lightning-layout-item>
+            <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={prevPage}
+                disabled={disablePrevious}></lightning-button>
+        </lightning-layout-item>
+
+        <lightning-layout-item>
+            <lightning-button label="Next" icon-name="utility:chevronright" onclick={nextPage} disabled={disableNext}>
+            </lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
